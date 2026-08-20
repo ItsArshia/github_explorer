@@ -1,5 +1,9 @@
+<script setup>
+import Header from '../components/layout/Header.vue';
+</script>
+
 <template>
-  <header></header>
+  <Header/>
   <main>
     <slot>Default Layout</slot>
   </main>
