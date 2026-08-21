@@ -182,6 +182,85 @@ function formatNumber(n: number | undefined) {
           </div>
         </div>
       </div>
+      <div class="py-8">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-foreground">مخزن‌ها</h3>
+          <span v-if="repos" class="text-sm text-muted">
+            {{ formatNumber(repos.length) }} مورد
+          </span>
+        </div>
+
+        <div v-if="reposPending" class="grid grid-cols-2 gap-4">
+          <div
+            v-for="n in 4"
+            :key="n"
+            class="h-32 rounded-xl bg-border animate-pulse"
+          />
+        </div>
+
+        <div v-else-if="reposError" class="text-center py-10 text-muted">
+          <p v-if="reposError.statusCode === 403">
+            محدودیت درخواست به API گیت‌هاب. کمی صبر کن.
+          </p>
+          <p v-else>خطا در دریافت مخزن‌ها.</p>
+        </div>
+
+        <div v-else-if="sortedRepos.length === 0" class="text-center py-10 text-muted">
+          این کاربر هیچ مخزن عمومی‌ای ندارد.
+        </div>
+
+        <div v-else class="grid grid-cols-2 gap-4">
+          <a
+            v-for="repo in sortedRepos"
+            :key="repo.id"
+            :href="repo.html_url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-surface rounded-xl border border-border p-5 flex flex-col gap-3 hover:border-accent hover:shadow-md transition"
+          >
+            <div class="flex items-start justify-between gap-2">
+              <h4 class="font-semibold text-foreground group-hover:underline break-all">
+                {{ repo.name }}
+              </h4>
+              <span
+                v-if="repo.fork"
+                class="text-xs shrink-0 px-2 py-0.5 rounded-full bg-border text-muted"
+              >
+                فورک
+              </span>
+              <span
+                v-if="repo.archived"
+                class="text-xs shrink-0 px-2 py-0.5 rounded-full bg-accent/20 text-accent"
+              >
+                آرشیو شده
+              </span>
+            </div>
+
+            <p class="text-sm text-muted line-clamp-2 min-h-[2.5rem]">
+              {{ repo.description ?? "بدون توضیحات" }}
+            </p>
+
+            <div class="flex items-center gap-4 text-xs text-muted mt-auto pt-2">
+              <span v-if="repo.language" class="inline-flex items-center gap-1.5">
+                <span
+                  class="w-2.5 h-2.5 rounded-full inline-block"
+                  :style="{ backgroundColor: languageColor(repo.language) }"
+                />
+                {{ repo.language }}
+              </span>
+              <span class="inline-flex items-center gap-1">
+                ⭐ {{ formatNumber(repo.stargazers_count) }}
+              </span>
+              <span class="inline-flex items-center gap-1">
+                🍴 {{ formatNumber(repo.forks_count) }}
+              </span>
+              <span class="mr-auto">
+                بروزرسانی: {{ formatDate(repo.updated_at) }}
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
