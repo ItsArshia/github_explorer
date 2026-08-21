@@ -6,6 +6,26 @@ interface User {
   bio: string | null;
   avatar_url: string | undefined;
   html_url: string;
+  followers?: number;
+  following?: number;
+  public_repos?: number;
+  location?: string | null;
+  blog?: string | null;
+  company?: string | null;
+}
+
+interface Repo {
+  id: number;
+  name: string;
+  full_name: string;
+  description: string | null;
+  html_url: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+  updated_at: string;
+  fork: boolean;
+  archived: boolean;
 }
 
 const route = useRoute();
