@@ -1,75 +1,53 @@
-# Nuxt Minimal Starter
+# GitHub Explorer
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A GitHub Explorer web application built with **NuxtJS** that allows users to search and explore GitHub users and repositories through the **GitHub REST API**.
 
-## Setup
+The project focuses on working with external APIs, handling asynchronous data, dynamic routing, and building a clean and responsive interface with NuxtJS.
 
-Make sure to install dependencies:
+## Features
+
+* 🔎 Search for GitHub users
+* 👤 View user information and profile details
+* 📦 Explore user repositories
+* ⭐ Display repository statistics and information
+* 🔗 Navigate directly to GitHub profiles and repositories
+* ⚡ Fetch and display data dynamically using the GitHub API
+* 📱 Responsive interface
+
+## Tech Stack
+
+* **NuxtJS**
+* **Vue.js**
+* **Tailwind CSS**
+* **GitHub REST API**
+* **JavaScript / TypeScript**
+
+## Purpose
+
+This project was built as a practical project to improve my experience with **NuxtJS**, API integration, data fetching, routing, and building applications around real-world APIs.
+
+## Screenshots
+
+<!-- Add project screenshots here -->
+
+## Getting Started
+
+Clone the repository and install the dependencies:
 
 ```bash
-# npm
+git clone <repository-url>
+cd github-explorer
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Start the development server:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The application will then be available locally.
 
-Build the application for production:
+## API
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This project uses the official GitHub REST API to retrieve user and repository data.
