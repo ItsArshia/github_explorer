@@ -122,6 +122,66 @@ function formatNumber(n: number | undefined) {
       <p v-else class="text-lg font-semibold">خطایی رخ داد.</p>
     </div>
 
-    <div v-else-if="user"></div>
+    <div v-else-if="user">
+      <div class="bg-surface rounded-2xl shadow-sm border border-border p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-right">
+        <img
+          :src="user.avatar_url"
+          :alt="user.login"
+          class="w-28 h-28 sm:w-32 sm:h-32 rounded-full ring-4 ring-border shrink-0 object-cover"
+        />
+
+        <div class="flex-1 flex flex-col gap-2 w-full">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <h2 class="text-2xl font-bold text-foreground">{{ user.name ?? user.login }}</h2>
+              <p class="text-muted">@{{ user.login }}</p>
+            </div>
+
+            <a
+              :href="user.html_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-important-button text-sm font-medium hover:opacity-90 transition"
+            >
+              مشاهده در گیت‌هاب
+            </a>
+          </div>
+
+          <p v-if="user.bio" class="text-foreground leading-relaxed">
+            {{ user.bio }}
+          </p>
+
+          <div class="flex flex-wrap gap-4 mt-2 text-sm text-muted">
+            <span v-if="user.company">🏢 {{ user.company }}</span>
+            <span v-if="user.location">📍 {{ user.location }}</span>
+            <a
+              v-if="user.blog"
+              :href="user.blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline"
+            >
+              🔗 {{ user.blog }}
+            </a>
+          </div>
+
+          
+          <div class="flex gap-6 mt-2 pt-3 border-t border-border text-sm">
+            <div>
+              <span class="font-bold text-foreground">{{ formatNumber(user.public_repos) }}</span>
+              <span class="text-muted"> مخزن</span>
+            </div>
+            <div>
+              <span class="font-bold text-foreground">{{ formatNumber(user.followers) }}</span>
+              <span class="text-muted"> دنبال‌کننده</span>
+            </div>
+            <div>
+              <span class="font-bold text-foreground">{{ formatNumber(user.following) }}</span>
+              <span class="text-muted"> دنبال‌شونده</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
