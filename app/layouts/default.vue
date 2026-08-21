@@ -4,7 +4,7 @@ import Header from '../components/layout/Header.vue';
 
 <template>
   <Header/>
-  <main>
+  <main class="max-w-7xl mx-auto">
     <slot>Default Layout</slot>
   </main>
   <footer></footer>

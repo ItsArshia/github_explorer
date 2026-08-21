@@ -16,10 +16,12 @@ function handleSearch() {
   <header class="bg-surface p-4">
     <div class="max-w-7xl mx-auto">
       <div class="flex justify-between px-3 py-1">
-        <div class="flex items-center justify-center">
-          <Github_icon class="w-16 h-16"/>
-          <span class="font-medium text-xl">مرورگر گیت‌هاب</span>
-        </div>
+        <NuxtLink to="/">
+          <div class="flex items-center justify-center">
+            <Github_icon class="w-16 h-16"/>
+            <span class="font-medium text-xl">مرورگر گیت‌هاب</span>
+          </div>
+        </NuxtLink>
         <div class="flex justify-center items-center">
           <form @submit.prevent="handleSearch" class="flex justify-center items-center">
             <div class="flex items-center gap-2 px-6 py-1 bg-background rounded-xl">
