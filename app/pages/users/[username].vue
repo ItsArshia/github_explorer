@@ -104,19 +104,24 @@ function formatNumber(n: number | undefined) {
 </script>
 
 <template>
-  <div v-if="pending" class="w-full h-screen">
-    <p class="font-bold text-2xl">
-      در حال دریافت اطلاعات
-    </p>
-  </div>
-  <div v-else-if="error">
-    <p v-if="error.statusCode === 404">کاربری با این نام پیدا نشد.</p>
-    <p v-else-if="error.statusCode === 403">محدودیت درخواست به API گیت‌هاب. کمی صبر کن.</p>
-    <p v-else>خطایی رخ داد.</p>
-  </div>
-  <div v-else-if="user">
-    <img :src="user.avatar_url" class="w-20 h-20 rounded-full" />
-    <h2>{{ user.name ?? user.login }}</h2>
-    <p>{{ user.bio }}</p>
+  <div class="min-h-screen px-4 py-10">
+    <!-- sdcsdcmlsdl -->
+    <div v-if="pending" class="flex flex-col items-center justify-center py-24 gap-4">
+      <div class="w-12 h-12 border-4 border-gray-300 border-t-gray-800 rounded-full animate-spin" />
+      <p class="font-bold text-xl">در حال دریافت اطلاعات</p>
+    </div>
+
+    <div v-else-if="error" class="flex flex-col items-center justify-center py-24 gap-3">
+      <div class="text-5xl">❌</div>
+      <p v-if="error.statusCode === 404" class="text-lg font-semibold">
+        کاربری با این نام پیدا نشد.
+      </p>
+      <p v-else-if="error.statusCode === 403" class="text-lg font-semibold">
+        محدودیت درخواست به API گیت‌هاب. کمی صبر کن.
+      </p>
+      <p v-else class="text-lg font-semibold">خطایی رخ داد.</p>
+    </div>
+
+    <div v-else-if="user"></div>
   </div>
 </template>
